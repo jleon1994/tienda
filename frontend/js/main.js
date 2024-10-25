@@ -38,3 +38,24 @@ document.addEventListener('DOMContentLoaded', () => {
     if (registerForm) registerForm.addEventListener('submit', handleRegister);
     if (loginForm) loginForm.addEventListener('submit', handleLogin);
 });
+
+
+// Función para manejar la solicitud de "Olvidé mi contraseña"
+async function handleForgotPassword(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+
+    try {
+        await axios.post('/api/auth/forgot-password', { email });
+        alert('Correo de restablecimiento enviado');
+    } catch (error) {
+        alert('Error en el envío del correo');
+    }
+}
+
+// Evento para el formulario de olvido de contraseña
+document.addEventListener('DOMContentLoaded', () => {
+    const forgotPasswordForm = document.getElementById('forgotPasswordForm');
+    if (forgotPasswordForm) forgotPasswordForm.addEventListener('submit', handleForgotPassword);
+});
+
