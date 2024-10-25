@@ -7,6 +7,12 @@ dotenv.config();
 const app = express();
 app.use(express.json()); // Parsear JSON
 
+const path = require('path');
+
+// Servir archivos estáticos (frontend)
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+
 // Conexión a MongoDB Atlas
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('Conectado a MongoDB Atlas'))
