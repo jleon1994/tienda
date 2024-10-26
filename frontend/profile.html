@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del Usuario</title>
+</head>
+<body>
+    <h1>Bienvenido</h1>
+    <p id="user-name"></p>
+    <p id="user-email"></p>
+
+    <script>
+        // Obtener los datos del usuario almacenados en localStorage
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        // Mostrar los datos del usuario en el DOM
+        if (user) {
+            document.getElementById('user-name').textContent = `Nombre: ${user.name}`;
+            document.getElementById('user-email').textContent = `Correo: ${user.email}`;
+        } else {
+            document.body.innerHTML = '<h1>Error: Usuario no autenticado</h1>';
+        }
+    </script>
+</body>
+</html>
