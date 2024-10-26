@@ -18,8 +18,6 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('Conectado a MongoDB Atlas'))
     .catch(err => console.error('Error en la conexión:', err));
 
-// Servir archivos estáticos (HTML, CSS, JS)
-app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Rutas
 app.use('/api/auth', authRoutes);

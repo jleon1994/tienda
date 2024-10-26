@@ -29,7 +29,6 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// Inicio de sesión
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
@@ -37,7 +36,7 @@ router.post('/login', async (req, res) => {
         // Verificar si el usuario existe
         let user = await User.findOne({ email });
         if (!user) {
-            return res.status(400).json({ msg: 'Usuario no encontrado' });
+            return res.status(404).json({ msg: 'Usuario no encontrado' });
         }
 
         // Comparar la contraseña
@@ -46,14 +45,18 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ msg: 'Contraseña incorrecta' });
         }
 
-        // Crear y devolver JWT
+        // Crear el payload y el token JWT
         const payload = { user: { id: user.id } };
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.json({ token });
+
+        // Devolver el token y los datos del usuario
+        res.json({ token, user: { id: user.id, name: user.name, email: user.email } });
     } catch (err) {
-        res.status(500).send('Error en el servidor');
+        console.error(err);
+        res.status(500).json({ msg: 'Error en el servidor' });
     }
 });
+
 
 module.exports = router;
 
