@@ -1,19 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-    <h1>Iniciar Sesión</h1>
-    <form id="login-form">
-        <input type="email" id="email" placeholder="Correo electrónico" required><br>
-        <input type="password" id="password" placeholder="Contraseña" required><br>
-        <button type="submit">Iniciar Sesión</button>
-    </form>
 
-    <!-- Enlace al script externo -->
-    <script src="js/main.js"></script>
+<body>
+
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-3 bg-light" style="width: 380px;">
+            <div class="card-body p-4 text-center" style="width: 300px;">
+                <div class="card p-4 text-center mb-2" style="width: 300px;">
+                    <div class="mb-2 images-center">
+                        <img src="images/logo.png" alt="Logo" id="logo" class="w-50">
+                    </div>
+                    <p><small>Inicia sesion para hacer compras en linea</small></p>
+                    <form id="login-form" class="needs-validation" novalidate>
+                        <div class="form-floating mb-3">
+                            <input id="email" type="email" class="form-control form-select-sm bg-light"
+                                placeholder="Correo electrónico" name="email" required>
+                            <label for="floatingInput" class="form-select-sm">Correo electronico</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input id="password" type="password" class="form-control form-select-sm bg-light"
+                                placeholder="Contraseña" name="password" required>
+                            <label for="floatingInput" class="form-select-sm">Contraseña</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-sm w-100">Iniciar sesion</button>
+                    </form>
+                    <div class="mb-3 blockquote-footer">
+                        <p><small><a href="">¿Has olvidado tu contraseña?</a></small></p>
+                    </div>
+                </div>
+                <div class="card text-center" style="width: 300px;">
+                    <div class="text-center mt-3">
+                        <p><small>¿No tienes una cuenta? <a href="register.html"> Registrate</a></small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-links">
+                <small><a href="#">Acerca de</a></small>
+                <small><a href="#">Ayuda</a></small>
+                <small><a href="#">Privacidad</a></small>
+                <small><a href="#">Términos</a></small>
+            </div>
+        </footer>
+
+        <script>
+            const form = document.getElementById('login-form');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                try {
+                    const res = await fetch('/api/auth/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email, password })
+                    });
+
+                    const data = await res.json();
+
+                    if (res.ok) {
+                        // Guardar token y datos del usuario en localStorage
+                        localStorage.setItem('token', data.token);
+                        localStorage.setItem('user', JSON.stringify(data.user));
+
+                        // Redirigir a la página de perfil
+                        window.location.href = 'profile.html';
+                    } else {
+                        alert(data.msg || 'Error al iniciar sesión');
+                    }
+                } catch (err) {
+                    console.error('Error:', err);
+                    alert('Error en el servidor');
+                }
+            });
+        </script>
 </body>
+
 </html>
