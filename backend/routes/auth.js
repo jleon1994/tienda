@@ -3,6 +3,9 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const router = express.Router();
+const authMiddleware = require('../middleware/auth');
+
+
 
 // Registro de usuario
 router.post('/register', async (req, res) => {
@@ -60,7 +63,18 @@ router.post('/login', async (req, res) => {
     }
 });
 
-module.exports = authMiddleware;
+// Ruta protegida usando el middleware
+router.get('/profile', authMiddleware, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select('-password');
+        res.json(user);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: 'Error en el servidor' });
+    }
+});
+
+
 module.exports = router;
 
 
