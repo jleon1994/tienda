@@ -11,5 +11,6 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         alert('Usuario registrado exitosamente');
     } catch (error) {
         alert('Error en el registro');
+        window.location.href = 'login.html';
     }
 });
