@@ -56,8 +56,22 @@ router.post('/login', async (req, res) => {
         res.status(500).json({ msg: 'Error en el servidor' });
     }
 });
+const authMiddleware = (req, res, next) => {
+    const token = req.header('x-auth-token');
+    if (!token) {
+        return res.status(401).json({ msg: 'Acceso denegado, no hay token' });
+    }
 
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = decoded.user;
+        next();  // Continúa hacia la siguiente función o controlador
+    } catch (err) {
+        res.status(401).json({ msg: 'Token no válido' });
+    }
+};
 
+module.exports = authMiddleware;
 module.exports = router;
 
 
