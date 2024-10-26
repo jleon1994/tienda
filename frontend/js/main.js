@@ -14,3 +14,38 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         alert('Error en el registro');
     }
 });
+
+
+//Login
+document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        const res = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+            // Guardar token y datos del usuario en localStorage
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+
+            // Redirigir a la página de perfil
+            window.location.href = 'profile.html';
+        } else {
+            alert(data.msg || 'Error al iniciar sesión');
+        }
+    } catch (err) {
+        console.error('Error:', err);
+        alert('Error en el servidor');
+    }
+});
+
