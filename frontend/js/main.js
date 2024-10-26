@@ -9,8 +9,8 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     try {
         const response = await axios.post('/api/auth/register', { name, email, password });
         alert('Usuario registrado exitosamente');
+        window.location.href = 'login.html';
     } catch (error) {
         alert('Error en el registro');
-        window.location.href = 'login.html';
     }
 });
