@@ -33,7 +33,7 @@
             try {
                 const response = await axios.post('/api/auth/login', { email, password });
                 alert('Inicio de sesión exitoso');
-                               window.location.href = 'index.html';
+                // Aquí puedes redirigir a una página de inicio
             } catch (error) {
                 alert('Error en el inicio de sesión');
             }
@@ -41,5 +41,6 @@
     </script>
 </body>
 </html>
+
 
 
