@@ -7,32 +7,35 @@
     <title>Registro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
 <body>
     <div class="d-flex justify-content-center align-items-center vh-100">
-        <div class="card bg-light">
+        <div class="card bg-primary">
             <div class="card-body p-4 text-center" style="width: 350px;">
                 <div class="card p-4 text-center mb-2" style="width: 300px;">
                     <div class="mb-2 images-center">
                         <img src="images/logo.png" alt="Logo" id="logo" class="w-50">
                     </div>
                     <p><small>Regístrate para hacer compras en linea</small></p>
-                    <form id="registerForm" class="mt-4">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="name" placeholder="Ingresa tu nombre" required>
+                    <form id="registerForm" class="needs-validation" novalidate>
+                        <div class="form-floating mb-2">
+                            <input id="name" type="text" class="form-control form-select-sm bg-light"
+                                placeholder="Nombre" name="nombre" required>
+                            <label for="floatingInput" class="form-select-sm">Nombres completos</label>
                         </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo"
-                                required>
+                        <div class="form-floating mb-2">
+                            <input id="email" type="email" class="form-control form-select-sm bg-light"
+                                placeholder="Correo electrónico" name="email" required>
+                            <label for="floatingInput" class="form-select-sm">Correo electronico</label>
                         </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password"
-                                placeholder="Ingresa tu contraseña" required>
+                        <div class="form-floating mb-2">
+                            <input id="password" type="password" class="form-control form-select-sm bg-light"
+                                placeholder="Contraseña" name="password" required>
+                            <label for="floatingInput" class="form-select-sm">Contraseña</label>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+                        <div class="mb-2 blockquote-footer">
+                            <p>Al registrarte, aceptas nuestras condiciones y nuestra política de privacidad.</p>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm w-100">Registrarte</button>
                     </form>
                 </div>
                 <div class="card text-center" style="width: 300px;">
@@ -45,5 +48,4 @@
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="js/main.js"></script>
 </body>
-
 </html>
