@@ -15,7 +15,7 @@
         <div class="row justify-content-center w-100">
 
             <!-- Card principal  -->
-            
+            <div class="col-12 col-sm-8">
                 <div class="card p-3 text-center mb-2">
                     <div class="mb-2 images-center">
                         <img src="images/logo.png" alt="Logo" id="logo" class="w-50">
@@ -43,52 +43,54 @@
                         <p><small>¿No tienes una cuenta? <a href="register.html"> Registrate</a></small></p>
                     </div>
                 </div>
-            
-        </div>
-        <footer>
-            <div class="footer-links">
-                <small><a href="#">Acerca de</a></small>
-                <small><a href="#">Ayuda</a></small>
-                <small><a href="#">Privacidad</a></small>
-                <small><a href="#">Términos y condiciones</a></small>
             </div>
-        </footer>
+            <footer>
+                <div class="footer-links">
+                    <small><a href="#">Acerca de</a></small>
+                    <small><a href="#">Ayuda</a></small>
+                    <small><a href="#">Privacidad</a></small>
+                    <small><a href="#">Términos y condiciones</a></small>
+                </div>
+            </footer>
+        </div>
+    </div>
 
-        <script>
-            const form = document.getElementById('login-form');
 
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const email = document.getElementById('email').value;
-                const password = document.getElementById('password').value;
+    <script>
+        const form = document.getElementById('login-form');
 
-                try {
-                    const res = await fetch('/api/auth/login', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ email, password })
-                    });
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-                    const data = await res.json();
+            try {
+                const res = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
 
-                    if (res.ok) {
-                        // Guardar token y datos del usuario en localStorage
-                        localStorage.setItem('token', data.token);
-                        localStorage.setItem('user', JSON.stringify(data.user));
+                const data = await res.json();
 
-                        // Redirigir a la página de perfil
-                        window.location.href = 'profile.html';
-                    } else {
-                        alert(data.msg || 'Error al iniciar sesión');
-                    }
-                } catch (err) {
-                    console.error('Error:', err);
-                    alert('Error en el servidor');
+                if (res.ok) {
+                    // Guardar token y datos del usuario en localStorage
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+
+                    // Redirigir a la página de perfil
+                    window.location.href = 'profile.html';
+                } else {
+                    alert(data.msg || 'Error al iniciar sesión');
                 }
-            });
-        </script>
+            } catch (err) {
+                console.error('Error:', err);
+                alert('Error en el servidor');
+            }
+        });
+    </script>
 </body>
 
 </html>
