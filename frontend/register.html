@@ -10,10 +10,13 @@
 </head>
 
 <body>
-    <div class="d-flex justify-content-center align-items-center vh-100">
-       
-            <div class="card-body p-4 text-center" style="width: 335px;">
-                <div class="card p-4 text-center mb-2" style="width: 335px;">
+    <!-- Contenedor principal -->
+    <div class="container d-flex justify-content-center align-items-center mb-4 vh-100">
+        <div class="row justify-content-center w-100">
+
+            <!-- Card principal  -->
+            <div class="col-12 col-sm-8">
+                <div class="card p-4 text-center mb-2">
                     <div class="mb-2 images-center">
                         <img src="images/logo.png" alt="Logo" id="logo" class="w-50">
                     </div>
@@ -40,16 +43,26 @@
                         <button type="submit" class="btn btn-primary btn-sm w-100">Registrarte</button>
                     </form>
                 </div>
-                <div class="card text-center" style="width: 335px;">
+                <div class="card text-center">
                     <div class="text-center mt-3">
                         <p><small>¿Ya tienes una cuenta? <a href="login.html"> Entrar</a></small></p>
                     </div>
                 </div>
             </div>
-        
-        
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="js/main.js"></script>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <small><a href="#">Acerca de</a></small>
+            <small><a href="#">Ayuda</a></small>
+            <small><a href="#">Privacidad</a></small>
+            <small><a href="#">Términos y condiciones</a></small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
