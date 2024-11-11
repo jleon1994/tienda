@@ -61,6 +61,8 @@ router.post('/login', async (req, res) => {
         console.error(err);
         res.status(500).json({ msg: 'Error en el servidor' });
     }
+
+  
 });
 
 // Ruta protegida usando el middleware
