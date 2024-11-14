@@ -10,7 +10,18 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Array de productos
 const products = [
-    { name: "Camiseta Básica Blanca", description: "Camiseta de algodón", price: 15.99, stock: 50, category: "Camisetas", imageUrl: "link1" },
+    {
+        name: "Camiseta Negra Algodon",
+        description: "Camiseta de algodón 100%, color negro",
+        category: "Básicas",
+        size: ["S", "M", "L", "XL"],
+        color: ["Negro"],
+        price: 30000,
+        stock: 100,
+        images: ["https://hmcolombia.vtexassets.com/arquivos/ids/3743623/Camiseta-Loose-Fit---Negro---H-M-CO.jpg?v=638538614671830000", "url_imagen2"],
+        rating: 4.5,
+        reviews: 20,
+    },
     
 ];
 

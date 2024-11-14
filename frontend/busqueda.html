@@ -1,22 +1,39 @@
-<!-- frontend/index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buscar Productos</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <title>Módulo de Búsqueda - Estilo SHEIN</title>
+  <link rel="stylesheet" href="css/buscador.css">
 </head>
 <body>
-  <h1>Módulo de Búsqueda</h1>
-
-  <form id="searchForm">
-    <input type="text" id="searchQuery" placeholder="Buscar productos..." required />
-    <button type="submit">Buscar</button>
-  </form>
+  <header>
+    <!-- Barra de navegación principal -->
+    <nav class="navbar">
+      <div class="logo">SHEIN</div>
+      <ul class="nav-links">
+        <li><a href="#">Categorías</a></li>
+        <li><a href="#">Novedades</a></li>
+        <li><a href="#">Ofertas</a></li>
+        <li><a href="#">Ropa de mujer</a></li>
+        <!-- Agrega más enlaces según lo necesites -->
+      </ul>
+      <!-- Barra de búsqueda -->
+      <form id="searchForm" class="search-bar">
+        <input type="text" id="searchQuery" placeholder="Buscar productos..." required />
+        <button type="submit" aria-label="Buscar">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path fill="currentColor" d="M21.71 20.29l-4.63-4.63A8 8 0 1 0 8 16a7.94 7.94 0 0 0 4.66-1.47l4.63 4.63a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.42zM10 14a6 6 0 1 1 6-6 6 6 0 0 1-6 6z"></path>
+          </svg>
+        </button>
+      </form>
+    </nav>
+  </header>
 
   <div id="searchResults"></div>
 
   <script src="js/search.js"></script>
 </body>
 </html>
+
+

@@ -48,4 +48,52 @@ footer a:hover {
     background-color: #ffffff;
 }
 
+.search-container {
+    position: relative;
+    width: 400px;
+}
+
+#search-input {
+    width: calc(100% - 60px);
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+#search-button {
+    width: 60px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-left: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+}
+
+.results-container {
+    position: absolute;
+    width: 100%;
+    border: 1px solid #ddd;
+    background-color: white;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 100;
+    display: none; /* Ocultamos inicialmente */
+    border-radius: 0 0 4px 4px;
+}
+
+.result-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.result-item:hover {
+    background-color: #f0f0f0;
+}
+
 
