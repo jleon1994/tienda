@@ -1,82 +1,128 @@
-/* styles.css */
-
+/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
-  }
-  
-  header {
-    background-color: #ffffff;
-    padding: 10px 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos para la barra de navegación */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+}
+
+/* Ocultar el menú completo en dispositivos pequeños */
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+}
+
+/* Estilos para la barra de búsqueda */
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.search-bar input[type="text"] {
+  border: none;
+  outline: none;
+  padding: 5px;
+  font-size: 16px;
+  width: 200px;
+}
+
+.search-bar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.search-bar svg {
+  fill: #333;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  /* Ajustar el tamaño de la barra de navegación */
   .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: auto;
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-  }
-  
+
+  /* Ocultar el menú de enlaces en pantallas pequeñas */
   .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 15px;
+    display: none;
   }
-  
-  .nav-links a {
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-  }
-  
-  .search-bar {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    padding: 5px 15px;
-    background-color: #fff;
-    transition: all 0.3s ease;
-  }
-  
-  .search-bar:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-  
+
+  /* Aumentar el ancho de la barra de búsqueda en móviles */
   .search-bar input[type="text"] {
-    border: none;
-    outline: none;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
     padding: 10px;
-    font-size: 16px;
-    width: 300px;
   }
-  
-  .search-bar input[type="text"]::placeholder {
-    color: #aaa;
+
+  .logo {
+    font-size: 20px;
   }
-  
-  .search-bar button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #333;
-    padding: 0;
-    display: flex;
-    align-items: center;
+
+  .search-bar input[type="text"] {
+    font-size: 14px;
   }
-  
+
   .search-bar svg {
     width: 20px;
     height: 20px;
   }
-  
+}
+
+/* Opcional: Mostrar el menú con un botón hamburguesa en móviles */
+.hamburger-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: block;
+    cursor: pointer;
+  }
+
+  /* Mostrar el menú al hacer clic en el botón de hamburguesa */
+  .hamburger-menu.active + .nav-links {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+}
