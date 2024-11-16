@@ -48,10 +48,56 @@
     </div>
   </template>
 
-  <!-- Contenedor donde se mostrarán los resultados de búsqueda -->
-   <div class="Container-search">
+  <div class="Container-search">
+    <!-- Filtros y ordenación -->
+    <div class="filter-container">
+      <button id="toggleFilterBtn" class="btn btn-primary">Mostrar Filtros</button>
+      <div class="sort-container">
+        <label for="sortBy">Ordenar por:</label>
+        <select id="sortBy">
+          <option value="price-asc">Precio: Menor a mayor</option>
+          <option value="price-desc">Precio: Mayor a menor</option>
+          <option value="rating">Mejor calificación</option>
+        </select>
+      </div>
+    </div>
+  
+    <!-- Contenedor de filtros -->
+    <div id="filters" class="filters" style="display: none;">
+      <!-- Filtro de precio -->
+      <div class="filter-item">
+        <label for="priceRange">Rango de precio:</label>
+        <input type="range" id="priceRange" min="0" max="50000" step="1">
+        <span id="priceValue">$0 - $50000</span>
+      </div>
+      <!-- Filtro de categoría -->
+      <div class="filter-item">
+        <label for="category">Categoría:</label>
+        <select id="category">
+          <option value="">Todas</option>
+          <option value="Camisetas">Camisetas</option>
+          <option value="Básicas">Básicas</option>
+          <option value="Pantalones">Pantalones</option>
+        </select>
+      </div>
+      <!-- Filtro de calificación -->
+      <div class="filter-item">
+        <label for="rating">Calificación mínima:</label>
+        <select id="rating">
+          <option value="0">Sin filtro</option>
+          <option value="1">1 estrella</option>
+          <option value="2">2 estrellas</option>
+          <option value="3">3 estrellas</option>
+          <option value="4">4 estrellas</option>
+          <option value="5">5 estrellas</option>
+        </select>
+      </div>
+    </div>
+  
+    <!-- Resultados de búsqueda -->
     <div id="searchResults"></div>
   </div>
+  
   <script src="js/search.js"></script>
 </body>
 </html>
