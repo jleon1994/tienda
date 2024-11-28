@@ -4,11 +4,12 @@ const dotenv = require('dotenv');
 const path = require('path');
 const authRoutes = require('./routes/auth');
 const searchRoutes = require('./routes/search');
+const cors = require('cors')
 
 dotenv.config();
 const app = express();
 app.use(express.json());
-
+app.use(cors());
 
 
 // Servir archivos estáticos (frontend)
